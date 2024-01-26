@@ -1,7 +1,11 @@
 import LoginWithGoogle from "@/components/buttons/LoginWithGoogle";
-import React from 'react'
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
-export default function loginPage() {
+export default async function loginPage() {
+
+    const session = await getServerSession(authOptions);
+    
     return (
         <div>
             <div className="p-4 max-w-xs mx-auto">
