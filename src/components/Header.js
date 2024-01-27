@@ -14,7 +14,7 @@ export default async function Header() {
   // console.log(session);
 
   return (
-      <header className="bg-white border-b-4 py-4">
+      <header className="bg-white  py-4 border-b-2 border-gray-400">
 
         <div className="flex justify-between max-w-4xl mx-auto px-6">
 

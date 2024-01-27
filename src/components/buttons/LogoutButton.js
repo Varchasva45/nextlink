@@ -4,11 +4,20 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 
 
-export default function LogoutButton() {
+export default function LogoutButton({
+  className = 'flex items-center gap-2 border p-2 px-4 shadow rounded-lg',
+  iconLeft = false,
+  iconClasses = '',
+}) {
   return (
-    <button onClick={() => signOut()} className="flex items-center gap-2 p-2 px-4 border shadow-md ">
+    <button onClick={() => signOut()} className={className}>
+        {iconLeft && (
+          <FontAwesomeIcon icon={faRightFromBracket} className={iconClasses} />
+        )}
         <span>Logout</span>
-        <FontAwesomeIcon icon={faRightFromBracket} className="h-6"/> 
+        {!iconLeft && (
+          <FontAwesomeIcon icon={faRightFromBracket} className={iconClasses} />
+        )}
     </button>
   );
 }

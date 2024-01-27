@@ -1,10 +1,9 @@
-import Header from "../components/Header";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Authprovider } from "@/components/Authprovider/Authprovider";
+import Header from "../../components/Header";
+import "../globals.css";
+import { Authprovider } from "@/components/authprovider/Authprovider";
+import {Lato} from 'next/font/google'
 
-
-const inter = Inter({ subsets: ["latin"] });
+const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={lato.className}>
         
         <main>
           <Header /> 
