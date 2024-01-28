@@ -10,6 +10,22 @@ const PageSchema = new Schema({
     owner: {
         type: String,
         required: true
+    },
+    displayName: {
+        type: String,
+        default: ""
+    },
+    location: {
+        type: String,
+        default: ""
+    },
+    bio: {
+        type: String,
+        default: ""
+    },
+    bgType: {
+        type: String,
+        default: "color"
     }
 }, {timestamps: true});
 

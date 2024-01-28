@@ -3,6 +3,34 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-200;
+  @apply bg-gray-100;
 }
+
+.setting-input {
+  @apply bg-gray-200 block w-full px-2 py-2 mb-2 font-semibold;
+}
+
+label.input-label{
+  @apply uppercase text-gray-400 text-xs mb-2 font-semibold;
+}
+
+.radio-togglers {
+  @apply p-1 bg-gray-200 inline-flex;
+}
+
+.radio-togglers div {
+  @apply p-2 px-4 flex items-center gap-2;
+}
+
+.radio-togglers input[type = "radio"] {
+  @apply hidden p-2;
+}
+
+.radio-togglers input[type = "radio"]:checked + div {
+  @apply bg-white text-blue-600;
+}
+
+
+
+
 

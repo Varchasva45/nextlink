@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import {Lato} from 'next/font/google'
 import AppSideBar from "@/components/layouts/AppSideBar";
+import { Toaster } from "react-hot-toast";
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] })
 
@@ -24,7 +25,7 @@ export default async function AppLayout({ children }) {
   return (
     <html lang="en">
       <body className={lato.className}>
-        
+        <Toaster />
         <main className="flex min-h-screen">
             <aside className="w-64 p-6 bg-white shadow">
 
