@@ -23,7 +23,6 @@ export default async function loginPage() {
                 <LoginWithGoogle />
             </div>
 
-            
         </div>
     );
 }

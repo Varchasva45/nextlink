@@ -26,7 +26,15 @@ const PageSchema = new Schema({
     bgType: {
         type: String,
         default: "color"
-    }
+    },
+    bgColor: {
+        type: String,
+        default: "black"
+    },
+    bgImage: {
+        type: String,
+        default: ""
+    },
 }, {timestamps: true});
 
 export const Page = models?.Page || model('Page', PageSchema);

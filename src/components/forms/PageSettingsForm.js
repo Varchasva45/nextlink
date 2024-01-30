@@ -6,8 +6,13 @@ import Image from "next/image";
 import savePageSettings from "@/actions/pageActions";
 import toast from "react-hot-toast";
 import SubmitButton from "../buttons/SubmitButton";
+import { useState } from "react";
 
 export default function PageSettingsForm({page, user}) {
+
+    const [bgType, setBgType] = useState(page?.bgType || "color");
+    const [bgColor, setBgColor] = useState(page?.bgColor || "black");
+    const [bgImage, setBgImage] = useState(page?.bgImage || null);
 
     async function saveBaseSettings(formData) {
         const result = await savePageSettings({formData, user});
@@ -19,23 +24,84 @@ export default function PageSettingsForm({page, user}) {
         }
     }
 
+    async function handleFileChange(e) {
+        const file = e.target.files?.[0];
+        // console.log(file);
+        if(file) {
+            const data = new FormData;
+            data.set('file', file);
+
+            fetch('/api/upload', {
+                  method: 'POST',
+                  body: data,
+                }).then(response => {
+                    response.json().then(link => {
+                    setBgImage(link);
+                });
+            });
+        }
+    }
+    
     return (
         <div className="-m-4">
-            <form action={saveBaseSettings}>  
+            <form action={saveBaseSettings}> 
 
-                <div className="bg-gray-300 py-16 flex justify-center items-center">
-                    <RadioTogglers
-                        defaultValue={'color'}
-                        options={
-                            [
-                                {value: "color", icon: faPalette},
-                                {value: "image", icon: faImage}
-                            ]
-                        } 
-                    />
+                <div className="p-3 bg-gray-100 border-b-2 border-gray-300">
+                    <div className="py-16 flex justify-center items-center bg-cover bg-center bg-no-repeat bg-stretch"
+                        style={bgType === "color" ? {backgroundColor: bgColor} : {backgroundImage: `url(${bgImage})`, backgroundSize: 'cover'}}
+                    >
+                        <div>
+                            <RadioTogglers
+                                defaultValue={page?.bgType}
+                                onChange={e => setBgType(e)}
+                                options={
+                                    [
+                                        {value: "color", icon: faPalette},
+                                        {value: "image", icon: faImage}
+                                    ]
+                                } 
+                            />
 
-                    
-                </div>
+                                {
+                                    bgType === "color" && (
+                                        <div className="bg-white mt-2 px-1 py-2 shadow">
+                                            <div className="gap-2 flex justify-center">
+                                                <span>Background Color:</span>
+                                                <input type="color" name="bgColor" onChange={e => setBgColor(e.target.value)} defaultValue={page?.bgColor}></input>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            
+                            
+
+                            {
+                                bgType === "image" && (
+                                    
+                                    <div className="flex justify-center">
+                                        
+                                        <label
+                                            className="bg-white mt-2 px-1 py-2 shadow mx-auto block"
+                                        >
+                                            <input type="file" 
+                                                className="hidden"
+                                                onChange={handleFileChange}
+                                            ></input>
+                                            <input className="hidden" name="bgImage" value={bgImage}></input>
+                                            Change Image
+                                        </label>
+                                    </div>
+                                )
+                            }
+
+
+                        </div>
+                    </div>
+                </div> 
+
+                
+
+                
 
                 <div className="flex justify-center">
                     <Image 
