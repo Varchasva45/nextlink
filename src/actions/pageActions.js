@@ -1,5 +1,6 @@
 'use server';
 import { Page } from "@/models/Page";
+import User from "@/models/User";
 import mongoose from "mongoose";
 
 export default async function savePageSettings({formData, user}) {
@@ -8,7 +9,7 @@ export default async function savePageSettings({formData, user}) {
     if(user) {
         const dataKeys = [
             'displayName','location',
-            'bio', 'bgType', 'bgColor', 'bgImage',
+            'bio', 'bgType', 'bgColor', 'bgImage', 'avatar'
         ];
       
         const dataToUpdate = {};
@@ -22,6 +23,14 @@ export default async function savePageSettings({formData, user}) {
             {owner:user?.email},
             dataToUpdate,
         );
+
+        if(formData.has('avatar')) {
+            const avatarLink = formData.get('avatar');
+            await User.updateOne(
+                {email:user?.email},
+                {image:avatarLink},
+            );
+        }
 
         return true;
     }

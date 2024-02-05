@@ -27,22 +27,24 @@ export default async function AppLayout({ children }) {
       <body className={lato.className}>
         <Toaster />
         <main className="flex min-h-screen">
-            <aside className="w-64 p-6 bg-white shadow">
+          
+            <aside className="w-64 p-6 pt-8 bg-white shadow">
 
-                <div className="rounded-full w-24 overflow-hidden mx-auto">
-                  <Image src={session.user.image} alt="avatar" width={256} height={256} />
-                </div>
+            <div className="rounded-full w-24 h-24 overflow-hidden mx-auto">
+              <Image src={session.user.image} alt="avatar" className="object-cover object-center" width={256} height={256} />
+            </div>
 
-                <div className="flex justify-center">
-                  <AppSideBar />
-                </div>
+
+            <div className="flex justify-center">
+              <AppSideBar />
+            </div>
                 
             </aside>
+
             <div className="w-full">
-              <div className="bg-white p-4 m-8 shadow">
                 {children}
-              </div>
             </div>
+
         </main>
         
       </body>

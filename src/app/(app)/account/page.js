@@ -6,6 +6,7 @@ import PageSettingsForm from "@/components/forms/PageSettingsForm";
 import { Page } from "@/models/Page";
 import mongoose from "mongoose";
 import { userAgentFromString } from "next/server";
+import PageButtonsForm from "@/components/forms/PageButtonsForm";
 
 export default async function AccountPage({searchParams}) {
 
@@ -17,7 +18,12 @@ export default async function AccountPage({searchParams}) {
     const page = await Page.findOne({owner: session?.user?.email});
 
     if(page) {
-        return <PageSettingsForm page={page} user={user} />
+        return (
+            <>
+                <PageSettingsForm page={page} user={user} />
+                <PageButtonsForm page={page} user={user}/>
+            </>
+        );
     }
 
     if(!session) {

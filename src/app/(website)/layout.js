@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import Header from "../../components/Header";
 import "../globals.css";
 import { Authprovider } from "@/components/authprovider/Authprovider";
@@ -13,11 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={lato.className}>
-        
+      <body className={lato.className}> 
+
+        <Toaster />
+
         <main>
           <Header /> 
           <div className="max-w-4xl mx-auto p-6">
+            
             <Authprovider> 
               {children}
             </Authprovider>

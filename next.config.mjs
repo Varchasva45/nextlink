@@ -4,6 +4,8 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: "*.googleusercontent.com"
+            },{
+                hostname: "nestlink.s3.amazonaws.com"
             }
         ]
     }

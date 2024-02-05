@@ -2,6 +2,7 @@
 import { signIn, useSession } from "next-auth/react";
 import { redirect , useRouter} from "next/navigation";;
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 
 export default function HeroForm() {
@@ -27,7 +28,7 @@ export default function HeroForm() {
         e.preventDefault();
         
         if(username == "") {
-            alert("Please enter a username");
+            toast.error("Please enter a username");
             return;
         }
 
@@ -36,6 +37,9 @@ export default function HeroForm() {
         if(session.data) {
             router.push("/account?desiredUsername=" + username);
         }else {
+
+            toast.loading("Redirecting to sign in..");
+
             await signIn('google', {
                 redirect: '/account?username=' + username,
             });
@@ -46,8 +50,8 @@ export default function HeroForm() {
         <form className="inline-flex items-center shadow-lg shadow-gray-700/20"  onSubmit = {handleSubmit}>
 
             <span className=" bg-white py-4 pl-4 pr-0.5">linklist.to/</span>
-            <input type = "text" className="py-4" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
-            <button type="submit" className="rounded-sm bg-blue-500 text-white py-4 px-6" >
+            <input type = "text" className="py-4 outline-none font-bold" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
+            <button type="submit" className="bg-blue-500 text-white py-4 px-6" >
                 Join for free
             </button>
 
