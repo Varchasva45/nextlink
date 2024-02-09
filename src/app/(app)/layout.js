@@ -28,7 +28,7 @@ export default async function AppLayout({ children }) {
         <Toaster />
         <main className="flex min-h-screen">
           
-            <aside className="w-64 p-6 pt-8 bg-white shadow">
+            <aside className="w-64 p-6 pt-9 bg-white shadow">
 
             <div className="rounded-full w-24 h-24 overflow-hidden mx-auto">
               <Image src={session.user.image} alt="avatar" className="object-cover object-center" width={256} height={256} />

@@ -113,7 +113,7 @@ export default function PageSettingsForm({page, user}) {
                                                     className="hidden"
                                                     onChange={handelCoverImageChange}
                                                 ></input>
-                                                <input className="hidden" name="bgImage" value={bgImage}></input>
+                                                <input className="hidden" name="bgImage" value={bgImage} readOnly></input>
                                                 <div className="flex items-center gap-2 px-1">
                                                     <FontAwesomeIcon icon={faCloudArrowUp} height={24} width={24} className="text-gray-700"/>
                                                     <span>Change Image</span>
@@ -130,7 +130,7 @@ export default function PageSettingsForm({page, user}) {
                     </div> 
 
 
-                    <div className="flex justify-center -mb-12">
+                    <div className="flex justify-center -mb-8">
                         
                         <div className="relative -top-8 w-[128px] h-[128px]">
 

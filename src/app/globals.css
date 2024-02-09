@@ -6,8 +6,12 @@ body {
   @apply bg-gray-200;
 }
 
+.button-input {
+  @apply bg-gray-200 w-full block py-2 px-2 mb-2;
+}
+
 .setting-input {
-  @apply bg-gray-200 block w-full px-2 py-2 mb-2 font-semibold;
+  @apply bg-gray-200 block w-full px-2 py-2 mb-2;
 }
 
 label.input-label{

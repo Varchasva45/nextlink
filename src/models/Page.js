@@ -35,6 +35,10 @@ const PageSchema = new Schema({
         type: String,
         default: ""
     },
+    buttons: {
+        type: Object,
+        default: []
+    }
 }, {timestamps: true});
 
 export const Page = models?.Page || model('Page', PageSchema);
