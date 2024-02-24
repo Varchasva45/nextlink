@@ -1,12 +1,13 @@
 "use client";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SectionBox from "../layouts/SectionBox";
-import { faEnvelope, faPlus, faMobile, faSave, faTrash} from "@fortawesome/free-solid-svg-icons"; 
 import { useState } from "react";
+import SectionBox from "../layouts/SectionBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPlus, faMobile, faSave, faTrash, faGripLines} from "@fortawesome/free-solid-svg-icons"; 
 import { faInstagram, faFacebook, faDiscord, faTiktok, faYoutube, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import SubmitButton from "../buttons/SubmitButton";
 import { savePageButtons } from "@/actions/pageActions";
 import toast from "react-hot-toast";
+import { ReactSortable } from "react-sortablejs";
 
 export default function PageButtonsForm({page, user}) {
 
@@ -23,9 +24,8 @@ export default function PageButtonsForm({page, user}) {
     ];
 
     const pageSavedButtons = Object.keys(page?.buttons || {});
-    const [activeButtons, setActiveButtons] = useState(buttons.filter(button => pageSavedButtons.includes(button.key)));
+    const [activeButtons, setActiveButtons] = useState(pageSavedButtons.map(button => buttons.find(btn => btn.key === button)));
     const availableButtons = buttons.filter(button => !activeButtons.find(btn => btn.key === button.key));
-
 
     function upperFirst(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
@@ -40,6 +40,7 @@ export default function PageButtonsForm({page, user}) {
     }
 
     async function saveButtons(formData) {
+
         await savePageButtons(formData);
         toast.success('Buttons saved');
     }
@@ -51,37 +52,46 @@ export default function PageButtonsForm({page, user}) {
 
                 <h2 className="text-2xl font-bold mb-4">Buttons</h2>
 
-                {activeButtons.map((button, index) => (
-                    <div className="mb-6 flex items-center">
-                        <div className="w-36 -mr-14 flex gap-2 items-center text-gray-700">
-                            <FontAwesomeIcon height={18} width={18} icon={button.icon} />
-                            <span>{upperFirst(button.label)}:</span>
-                        </div>
-
-                        <div className="flex flex-grow">
-                            <input type="text" 
-                                className="button-input bg-gray-100 block flex-grow" 
-                                name={button.key}
-                                placeholder={button.placholder} 
-                                defaultValue={page?.buttons[button.key]}
-                                style={{
-                                    marginBottom: 0
-                                }}
-                            />
-
-                            <button 
-                                className="text-gray-700 px-4 bg-gray-300 hover:bg-gray-400"
-                                onClick={() => removeButtonFromProfile(button)}
-                                type="button"
-                            >
+                <ReactSortable list={activeButtons} setList={setActiveButtons}>
+                    {activeButtons.map((button, index) => (
+                        <div className="mb-6 flex items-center">
+                            <div className="w-48 -mr-14 flex gap-2 items-center text-gray-700">
                                 <FontAwesomeIcon 
-                                    icon={faTrash} 
+                                    height={18} 
+                                    width={18} 
+                                    icon={faGripLines} 
+                                    className="cursor-pointer text-gray-500"
                                 />
-                            </button>
-                        </div>
+                                <FontAwesomeIcon height={18} width={18} icon={button.icon} />
+                                <span>{upperFirst(button.label)}:</span>
+                            </div>
 
-                    </div>
-                ))}
+                            <div className="flex flex-grow">
+                                <input type="text" 
+                                    className="button-input bg-gray-100 block flex-grow" 
+                                    name={button.key}
+                                    placeholder={button.placholder} 
+                                    defaultValue={page?.buttons[button.key]}
+                                    style={{
+                                        marginBottom: 0
+                                    }}
+                                />
+
+                                <button 
+                                    className="text-gray-700 px-4 bg-gray-300 hover:bg-gray-400"
+                                    onClick={() => removeButtonFromProfile(button)}
+                                    type="button"
+                                >
+                                    <FontAwesomeIcon 
+                                        icon={faTrash} 
+                                    />
+                                </button>
+                            </div>
+
+                        </div>
+                    ))}
+                </ReactSortable>
+
 
                 <div className="flex flex-wrap gap-2 pt-4 pb-4 border-t-2 border-b-2 border-gray-300">
                     {availableButtons.map((button) => (

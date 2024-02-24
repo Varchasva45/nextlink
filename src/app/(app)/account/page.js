@@ -5,8 +5,10 @@ import UsernameForm from "@/components/forms/UsernameForm";
 import PageSettingsForm from "@/components/forms/PageSettingsForm";
 import { Page } from "@/models/Page";
 import mongoose from "mongoose";
-import { userAgentFromString } from "next/server";
+
 import PageButtonsForm from "@/components/forms/PageButtonsForm";
+import PageLinksForm from "@/components/forms/PageLinksForm";
+
 
 export default async function AccountPage({searchParams}) {
 
@@ -22,6 +24,7 @@ export default async function AccountPage({searchParams}) {
             <>
                 <PageSettingsForm page={page} user={user} />
                 <PageButtonsForm page={page} user={user}/>
+                <PageLinksForm page={page} user={user}/>
             </>
         );
     }
