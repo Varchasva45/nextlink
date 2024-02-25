@@ -40,7 +40,6 @@ export default function PageButtonsForm({page, user}) {
     }
 
     async function saveButtons(formData) {
-
         await savePageButtons(formData);
         toast.success('Buttons saved');
     }
@@ -52,10 +51,10 @@ export default function PageButtonsForm({page, user}) {
 
                 <h2 className="text-2xl font-bold mb-4">Buttons</h2>
 
-                <ReactSortable list={activeButtons} setList={setActiveButtons}>
+                <ReactSortable list={activeButtons} setList={setActiveButtons} handle=".handle">
                     {activeButtons.map((button, index) => (
-                        <div className="mb-6 flex items-center">
-                            <div className="w-48 -mr-14 flex gap-2 items-center text-gray-700">
+                        <div key={button.key} className="mb-6 flex items-center">
+                            <div className="handle w-48 -mr-14 flex gap-2 items-center text-gray-700">
                                 <FontAwesomeIcon 
                                     height={18} 
                                     width={18} 
@@ -78,7 +77,7 @@ export default function PageButtonsForm({page, user}) {
                                 />
 
                                 <button 
-                                    className="text-gray-700 px-4 bg-gray-300 hover:bg-gray-400"
+                                    className="text-gray-700 px-4 bg-gray-300 hover:bg-red-200"
                                     onClick={() => removeButtonFromProfile(button)}
                                     type="button"
                                 >

@@ -38,6 +38,10 @@ const PageSchema = new Schema({
     buttons: {
         type: Object,
         default: []
+    },
+    links: {
+        type: Object,
+        default: []
     }
 }, {timestamps: true});
 

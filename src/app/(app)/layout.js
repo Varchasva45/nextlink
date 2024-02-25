@@ -1,14 +1,13 @@
-
 import "../globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import {Lato} from 'next/font/google'
+import { Lato } from "next/font/google";
 import AppSideBar from "@/components/layouts/AppSideBar";
 import { Toaster } from "react-hot-toast";
 
-const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] })
+const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -16,37 +15,53 @@ export const metadata = {
 };
 
 export default async function AppLayout({ children }) {
-  
   const session = await getServerSession(authOptions);
-  if(!session) {
+  if (!session) {
     return redirect("/");
   }
-  
+
   return (
     <html lang="en">
       <body className={lato.className}>
         <Toaster />
         <main className="flex min-h-screen">
-          
-            <aside className="w-64 p-6 pt-9 bg-white shadow">
-
+          <aside
+            className="w-1/6 p-6 pt-9 bg-white shadow"
+            style={{
+              position: "fixed",
+              top: "0",
+              height: "100vh",
+              left: 0,
+            }}
+          >
             <div className="rounded-full w-24 h-24 overflow-hidden mx-auto">
-              <Image src={session.user.image} alt="avatar" className="object-cover object-center" width={256} height={256} />
+              <Image
+                src={session.user.image}
+                alt="avatar"
+                className="object-cover object-center"
+                width={256}
+                height={256}
+              />
             </div>
-
 
             <div className="flex justify-center">
               <AppSideBar />
             </div>
-                
-            </aside>
+          </aside>
 
-            <div className="w-full">
-                {children}
-            </div>
-
+          <div
+            className="a w-5/6"
+            style={{
+              position: "fixed",
+              right: 0,
+              top: 0,
+              height: "100vh",
+              overflowY: "auto",
+            }}
+          >
+            {children}
+          </div>
         </main>
-        
       </body>
     </html>
   );

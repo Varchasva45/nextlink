@@ -65,3 +65,20 @@ export async function savePageButtons(formData) {
     
     return false;
 }
+
+export async function savePageLinks(links) {
+    console.log(links);
+    await mongoose.connect(process.env.MONGO_URI);
+    const session = await getServerSession(authOptions);
+    console.log(session);
+    if (session) {
+      await Page.updateOne(
+        {owner:session?.user?.email},
+        {links},
+      );
+      console.log("Hello"); 
+      return true;
+    } else {
+      return false;
+    }
+}

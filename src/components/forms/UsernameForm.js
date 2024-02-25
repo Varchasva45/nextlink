@@ -28,7 +28,7 @@ export default function UsernameForm({desiredUsername}) {
     }
 
     return (
-        <form action={handleSubmit}>
+        <form action={handleSubmit} className="h-screen flex flex-col items-center justify-center">
             <h1 className="text-4xl font-bold text-center mb-2 mt-8">Grab Your Username</h1>
             <p className="text-center mb-6 text-gray-500"> 
                 Choose Your Username
@@ -48,7 +48,7 @@ export default function UsernameForm({desiredUsername}) {
                 )}
                
                 <button type="submit" 
-                    className= "bg-blue-500 text-white py-2 px-6 w-full flex items-center justify-center gap-2"
+                    className= "bg-blue-500 text-white py-2 px-20 w-full flex items-center justify-center gap-2"
                 >
                     <span>Claim Username</span>
                     <RightIcon />

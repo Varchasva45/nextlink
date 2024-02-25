@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import SubmitButton from "../buttons/SubmitButton";
 import { useState } from "react";
 import SectionBox from "../layouts/SectionBox";
+import upload from "@/libs/upload";
 
 export default function PageSettingsForm({page, user}) {
 
@@ -23,39 +24,6 @@ export default function PageSettingsForm({page, user}) {
             toast.success("Page settings saved!");
         } else {
             toast.error("Something went wrong!");
-        }
-    }
-
-    async function upload(e, callbackFn) {
-        const file = e.target.files?.[0];
-        // console.log(file);
-        if(file) {
-
-            const promise = new Promise(async (resolve, reject) => {
-                const data = new FormData;
-                data.set('file', file);
-
-                await fetch('/api/upload', {
-                    method: 'POST',
-                    body: data,
-                    }).then(response => {
-                        if(!response.ok) {
-                            reject("Error uploading file");
-                        }
-                        response.json().then(link => {
-                        callbackFn(link);
-                        resolve(link);
-                    });
-                }); 
-
-            });
-
-            await toast.promise(promise, {
-                loading: 'Uploading...',
-                success: 'File uploaded!',
-                error: 'Error uploading file'
-            });
-            
         }
     }
 
