@@ -10,6 +10,7 @@ import { useState } from "react";
 import SectionBox from "../layouts/SectionBox";
 import upload from "@/libs/upload";
 
+
 export default function PageSettingsForm({page, user}) {
 
     const [bgType, setBgType] = useState(page?.bgType || "color");

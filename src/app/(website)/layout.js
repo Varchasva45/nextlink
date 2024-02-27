@@ -1,8 +1,8 @@
 import { Toaster } from "react-hot-toast";
-import Header from "../../components/Header";
 import "../globals.css";
 import { Authprovider } from "@/components/authprovider/Authprovider";
 import {Lato} from 'next/font/google'
+import Header from "@/components/Header";
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 

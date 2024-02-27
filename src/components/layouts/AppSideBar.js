@@ -30,7 +30,7 @@ export default function AppSideBar() {
 
             <Link href={'/'} className="flex gap-4 text-sm items-center text-gray-500 pt-4 border-t border-gray-400 mt-2">
                 <FontAwesomeIcon icon={faArrowLeft} className="h-4 w-4" />
-                <span>Back to website</span>
+                <span>back to website</span>
             </Link>
 
         </nav>
