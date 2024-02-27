@@ -52,9 +52,7 @@ export default async function AppLayout({ children }) {
                   page && <Link target="_blank" href={"/" + page.uri}> 
                     <div className="flex justify-center items-center gap-2 pt-3">
                       <FontAwesomeIcon icon={faLink} className="text-lg text-blue-500 h-6 w-6"/>
-                      <div className="flex gap-1 font-bold">
-                        <span className="font-bold">{page.uri}</span>
-                      </div>
+                      <span className="font-bold">{page.uri}</span>
                     </div> 
                   </Link>
                 }
