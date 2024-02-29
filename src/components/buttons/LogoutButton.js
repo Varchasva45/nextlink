@@ -5,7 +5,7 @@ import {faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 
 
 export default function LogoutButton({
-  className = 'flex items-center gap-2 border p-2 px-4 shadow rounded-lg',
+  className = 'flex items-center gap-2 border px-4 shadow rounded-lg',
   iconLeft = false,
   iconClasses = '',
 }) {

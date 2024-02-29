@@ -95,7 +95,7 @@ function PageLinksForm({page, user}) {
                                             className="flex gap-1 text-center items-center"
                                             htmlFor={'icon' + link.id}
                                         >
-                                            <FontAwesomeIcon icon={faCloudArrowUp} />
+                                            <FontAwesomeIcon icon={faCloudArrowUp} height={24} width={24} />
                                             <span>Change icon</span>
                                         </label>
                                     </div>
@@ -105,7 +105,7 @@ function PageLinksForm({page, user}) {
                                         <button
                                             onClick={() => removeLink(link.id)}
                                             type="button" className="w-full bg-gray-300 py-1 px-3 mb-2 h-full flex gap-2 items-center justify-center hover:bg-red-400">
-                                            <FontAwesomeIcon icon={faTrash} />
+                                            <FontAwesomeIcon icon={faTrash} height={24} width={24}/>
                                             <span>Remove this link</span>
                                         </button>
                                     </div>
