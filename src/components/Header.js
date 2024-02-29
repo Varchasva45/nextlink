@@ -5,13 +5,10 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLink} from "@fortawesome/free-solid-svg-icons";
-import { redirect } from "next/navigation";
-
 
 export default async function Header() {
 
   const session = await getServerSession(authOptions);
-  // console.log(session);
 
   return (
       <header className="bg-white py-4 border-b-2 border-gray-400">
