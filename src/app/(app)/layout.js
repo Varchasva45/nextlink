@@ -11,6 +11,11 @@ import { Page } from "@/models/Page";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import mongoose, { connect } from "mongoose";
+import { Page } from "@/models/Page";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -65,8 +70,10 @@ export default async function AppLayout({ children }) {
                 <AppSideBar />
               </div>
             </div>
+           
           </aside>
 
+  
           <div className="w-full">
             {children}
           </div>
