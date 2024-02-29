@@ -34,10 +34,20 @@ export default async function UserPage({params}) {
     const uri  = params.uri;
     await mongoose.connect(process.env.MONGO_URI);
     const page = await Page.findOne({uri: uri});
+
+    if(!page) {
+        return (
+            <div>
+                "No Page Found"
+            </div>
+        );
+    }   
+
     const user = await User.findOne({email: page.owner});
+    await Event.create({uri: "/" + uri, type: "View", page: uri});
 
     return (
-        <div className="bg-blue-950 flex flex-col h-screen text-white">
+        <div className="bg-blue-950 flex flex-col h-screen text-white shadow">
             <div className="-mb-16 h-36 bg-gray-400 bg-cover bg-center bg-no-repeat bg-stretch"
                 style={page.bgType === "color" ? {backgroundColor: page.bgColor} : {backgroundImage: `url(${page.bgImage})`, backgroundSize: 'cover'}}
             ></div>
@@ -67,24 +77,33 @@ export default async function UserPage({params}) {
             </div>
                 
 
-            <div className={`max-w-2xl grid ${page.links.length === 1 ? 'place-items-center' : 'md:grid-cols-2'} mx-auto mt-8 gap-4 p-4`}>
+            {/* Links */}
+            <div className={`max-w-2xl mx-auto grid ${page.links.length === 1 ? 'place-items-center' : 'md:grid-cols-2'} gap-8 p-4 pt-8 px-8`}>
                 {page.links.map(link => (
-                    <Link key={link.title} href="/" className="flex gap-3 bg-indigo-800 p-2 shrink grow-0 shadow-md">
-                        <div className="bg-blue-700 h-16 w-16 relative flex items-center justify-center aspect-square -left-5">
-                            {link.icon && <Image src={link.icon} alt={link.title} width={64} height={64}/>}
-                            {!link.icon && <FontAwesomeIcon icon={faLink} height={28} width={28} className="text-white"/>}
+                    <Link
+                        key={link.url}
+                        target="_blank"
+                        ping={process.env.URL+'api/click?url='+ btoa(link.url)+'&page='+page.uri}
+                        className="bg-indigo-800 p-2 block flex"
+                        href={link.url}>
+                        <div className="relative -left-4 overflow-hidden w-16">
+                        <div className="w-16 h-16 bg-blue-700 aspect-square relative flex items-center justify-center aspect-square">
+                            {link.icon && (
+                            <Image
+                                className="w-full h-full object-cover"
+                                src={link.icon}
+                                alt={'icon'} width={64} height={64} />
+                            )}
+                            {!link.icon && (
+                            <FontAwesomeIcon icon={faLink} className="w-8 h-8" />
+                            )}
                         </div>
-
-                        <div className="-ml-4">
-                            <div>
-                                <h3> 
-                                    {link.title}
-                                </h3>
-                                
-                                <p className="text-white/50 overflow-hidden h-6">
-                                    {link.subtitle}
-                                </p>
-                            </div>
+                        </div>
+                        <div className="flex items-center justify-center shrink grow-0 overflow-hidden">
+                        <div>
+                            <h3>{link.title}</h3>
+                            <p className="text-white/50 h-6 overflow-hidden">{link.subtitle}</p>
+                        </div>
                         </div>
                     </Link>
                 ))}
