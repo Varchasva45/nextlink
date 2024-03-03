@@ -11,7 +11,7 @@ export default async function Header() {
   const session = await getServerSession(authOptions);
 
   return (
-      <header className="bg-white py-4 border-b-2 border-gray-400 w-full overflow-hidden">
+      <header className="bg-white py-4 border-b border-black w-full overflow-hidden">
 
         <div className="flex justify-between max-w-4xl mx-auto px-6">
 
@@ -19,7 +19,7 @@ export default async function Header() {
 
             <Link href={'/'} className="flex items-center gap-2 text-lg text-blue-500">
               <FontAwesomeIcon icon={faLink} className="h-6"/>
-              <span className="font-bold">LinkList</span>
+              <span className="font-bold">NextLink</span>
             </Link>
 
             <nav className="hidden md:flex  gap-5 text-slate-500 items-center text-lg">

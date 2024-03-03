@@ -16,7 +16,7 @@ export default async function AnalyticsPage() {
     if(!session) {
         return (
             <div>
-                "No Usser Found"
+                {"No Usser Found"}
             </div>
         );
     }
@@ -26,7 +26,7 @@ export default async function AnalyticsPage() {
     if(!page) {
         return (
             <div>
-                "No Page Found"
+                {"Not Available"}
             </div>
         
         );

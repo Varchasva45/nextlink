@@ -38,7 +38,7 @@ export default async function UserPage({params}) {
     if(!page) {
         return (
             <div>
-                "No Page Found"
+                {"Not Available"}
             </div>
         );
     }   
@@ -70,7 +70,7 @@ export default async function UserPage({params}) {
             {/* Buttons */}
             <div className="flex justify-center items-center gap-2 mt-8">   
                 {Object.keys(page.buttons).map(key => (
-                    <Link href={buttonClick(key, page.buttons[key])} target="_blank" className="bg-white p-1 rounded-full">
+                    <Link key={key} href={buttonClick(key, page.buttons[key])} target="_blank" className="bg-white p-1 rounded-full">
                         <FontAwesomeIcon icon={buttonIcons[key]} height={18} width={18} className="text-blue-950"/>
                     </Link>
                 ))}

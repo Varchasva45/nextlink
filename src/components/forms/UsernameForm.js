@@ -30,7 +30,7 @@ export default function UsernameForm({desiredUsername}) {
     return (
         <form action={handleSubmit} className="h-screen flex flex-col items-center justify-center">
             <h1 className="text-4xl font-bold text-center mb-2 mt-8">Grab Your Username</h1>
-            <p className="text-center mb-6 text-gray-500"> 
+            <p className="text-center mb-6 text-gray-800"> 
                 Choose Your Username
             </p>
 
