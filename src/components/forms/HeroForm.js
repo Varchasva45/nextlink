@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 
-export default function HeroForm() {
+export default function HeroForm({user}) {
+
+    console.log(user);
+
     const router = useRouter();
-  
     const [username, setUsername] = useState("");
 
     useEffect(() => {
@@ -33,15 +35,17 @@ export default function HeroForm() {
 
         window.localStorage.setItem("desiredUsername", username);
 
-        if(session.data) {
-            router.push("/account?desiredUsername=" + username);
+        if (username.length > 0) {
+            if (user) {
+              toast.loading('Creating account...');
+              router.push('/account?desiredUsername='+username);
+            } else {
+              toast.loading('Signing in with Google...');
+              window.localStorage.setItem('desiredUsername', username);
+              await signIn('google');
+            }
         }else {
-
-            toast.loading("Redirecting to sign in..");
-
-            await signIn('google', {
-                redirect: '/account?username=' + username,
-            });
+            toast.error('Please enter a username');
         }
     }
 
