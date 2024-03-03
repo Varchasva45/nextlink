@@ -1,5 +1,5 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
+import { signIn} from "next-auth/react";
 import { redirect , useRouter} from "next/navigation";;
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 
 export default function HeroForm() {
     const router = useRouter();
-    const session = useSession();
   
     const [username, setUsername] = useState("");
 

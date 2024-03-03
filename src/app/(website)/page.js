@@ -1,4 +1,3 @@
-import { Authprovider } from "@/components/authprovider/Authprovider";
 import HeroForm from "@/components/forms/HeroForm";
 import Image from "next/image";
 
@@ -11,10 +10,7 @@ export default function Home() {
             <h1 className="text-6xl font-bold">Your one Link <br />for everything</h1>
             <h2 className="text-gray-800 text-xl mt-6">Share your links, social profiles, contact info and more on one page</h2>
           </div>
-
-          <Authprovider>
             <HeroForm />
-          </Authprovider>
         </div>
 
         

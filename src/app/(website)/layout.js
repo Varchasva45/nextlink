@@ -1,6 +1,5 @@
 import { Toaster } from "react-hot-toast";
 import "../globals.css";
-import { Authprovider } from "@/components/authprovider/Authprovider";
 import {Lato} from 'next/font/google'
 import Header from "@/components/Header";
 
@@ -21,10 +20,7 @@ export default function RootLayout({ children }) {
         <main>
           <Header /> 
           <div className="max-w-4xl mx-auto p-6">
-            
-            <Authprovider> 
-              {children}
-            </Authprovider>
+            {children}
           </div>
         </main>
         
