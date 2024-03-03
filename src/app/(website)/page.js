@@ -15,7 +15,7 @@ export default function Home() {
 
         
           <Image
-            src="https://nestlink.s3.amazonaws.com/fdkltbhl7q6.png"
+            src="https://nestlink.s3.amazonaws.com/irkltboyca3.png"
             alt="hero"
             width={256}
             height={256}
@@ -23,7 +23,7 @@ export default function Home() {
           />
 
           <Image
-            src="https://nestlink.s3.amazonaws.com/624ltbgb8qj.png"
+            src="https://nestlink.s3.amazonaws.com/irkltboy0ep.png"
             alt="hero"
             width={256}
             height={256}
