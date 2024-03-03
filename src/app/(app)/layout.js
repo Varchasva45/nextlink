@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 import mongoose, { connect } from "mongoose";
 import { Page } from "@/models/Page";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faLink } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
@@ -32,9 +32,22 @@ export default async function AppLayout({ children }) {
     <html lang="en">
       <body className={lato.className}>
         <Toaster />
-        <main className="flex min-h-screen">
+        <main className="md:flex min-h-screen">
+
+
+          <label htmlFor="navCheckbox" className="cursor-pointer md:hidden pt-8 pl-8 inline-flex justify-center items-center gap-2">
+            <FontAwesomeIcon icon={faBars} className="text-lg h-6 w-6"/>
+            <span>Open Navigation</span>
+          </label>
+
+          <input type="checkbox" id="navCheckbox" className="hidden ml-3"/>
+
+          <label htmlFor="navCheckbox" className="backdrop hidden fixed inset-0 bg-black/80 z-10"></label>
+
           <aside
-            className="w-64 p-3 px-6 pt-9 bg-white shadow">
+            className="w-60 p-3 px-6 pt-9 bg-white shadow fixed md:static -left-72 bottom-0 top-0 z-20 transition-all"
+          >
+            
             <div className="sticky top-0 p-2">
               <div className="rounded-full w-24 h-24 overflow-hidden mx-auto">
                 <Image

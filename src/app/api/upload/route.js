@@ -33,6 +33,7 @@ export async function POST(req) {
         }));
 
         const url = `https://${process.env.BUCKET_NAME}.s3.amazonaws.com/${newFilename}`;
+        console.log(url);
         return Response.json(url);
     }
 }

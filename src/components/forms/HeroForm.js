@@ -51,8 +51,8 @@ export default function HeroForm() {
 
             <span className=" bg-white py-4 pl-4 pr-0.5">linklist.to/</span>
             <input type = "text" className="py-4 outline-none font-bold" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
-            <button type="submit" className="bg-blue-500 text-white py-4 px-6" >
-                Join for free
+            <button type="submit" className="bg-blue-500 text-white py-4 px-10">
+                Join
             </button>
 
         </form>

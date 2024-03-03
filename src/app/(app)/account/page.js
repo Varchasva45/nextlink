@@ -5,9 +5,9 @@ import UsernameForm from "@/components/forms/UsernameForm";
 import PageSettingsForm from "@/components/forms/PageSettingsForm";
 import { Page } from "@/models/Page";
 import mongoose from "mongoose";
-
 import PageButtonsForm from "@/components/forms/PageButtonsForm";
 import PageLinksForm from "@/components/forms/PageLinksForm";
+import cloneDeep from "clone-deep";
 
 
 export default async function AccountPage({searchParams}) {
@@ -19,12 +19,16 @@ export default async function AccountPage({searchParams}) {
     mongoose.connect(process.env.MONGO_URI);
     const page = await Page.findOne({owner: session?.user?.email});
 
+    const leanPage = cloneDeep(page.toJSON());
+    leanPage._id = leanPage._id.toString();
+
+
     if(page) {
         return (
             <>
-                <PageSettingsForm page={page} user={user} />
-                <PageButtonsForm page={page} user={user}/>
-                <PageLinksForm page={page} user={user}/>
+                <PageSettingsForm page={leanPage} user={user} />
+                <PageButtonsForm page={leanPage} user={user}/>
+                <PageLinksForm page={leanPage} user={user}/>
             </>
         );
     }

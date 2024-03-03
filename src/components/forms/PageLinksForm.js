@@ -71,49 +71,54 @@ function PageLinksForm({page, user}) {
 
                 <ReactSortable list={links} setList={setLinks} handle=".handle">
                     {links.map((link) => (
-                        <div key={link.id} className="mt-4 flex items-center gap-5 mb-10">
-                            <div className="handle text-center mr-2">
-                                <FontAwesomeIcon icon={faGripLines} height={18} width={18} className="cursor-pointer" />
-                            </div>
-                            
-                            <div className="flex flex-col gap-4 items-center">  
+                        <div key={link.id} className="mt-4 flex md:flex-row flex-col items-center gap-5 md:gap-8 mb-10">
+                                
+                            <div className="flex gap-4 justify-center items-center">
+                                <div className="handle text-center mr-2">
+                                    <FontAwesomeIcon icon={faGripLines} height={18} width={18} className="cursor-pointer" />
+                                </div>
+                                
+                                <div className="flex flex-col gap-4 items-center">  
+                                    
                                     <div className="w-16 h-16 bg-gray-300 flex relative aspect-square items-center justify-center overflow-hidden">
                                         {link.icon && <Image src={link.icon} alt="icon" height={64} width={64} className="w-full h-full object-cover" />}
                                         {!link.icon && <FontAwesomeIcon icon={faLink} height={18} width={18} className="" />}
                                     </div>
 
-                                <div className="flex flex-col gap-2">
-                                    <div className="flex justify-center"> 
-                                        <input 
-                                            id={'icon' + link.id} 
-                                            type="file" 
-                                            className="hidden"
-                                            onChange={ev => handleUpload(ev, link.id)}
-                                        />
-                                        <label 
-                                            type="button" 
-                                            className="flex gap-1 text-center items-center"
-                                            htmlFor={'icon' + link.id}
-                                        >
-                                            <FontAwesomeIcon icon={faCloudArrowUp} height={24} width={24} />
-                                            <span>Change icon</span>
-                                        </label>
-                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex justify-center"> 
+                                            <input 
+                                                id={'icon' + link.id} 
+                                                type="file" 
+                                                className="hidden"
+                                                onChange={ev => handleUpload(ev, link.id)}
+                                            />
+                                            <label 
+                                                type="button" 
+                                                className="flex gap-1 text-center items-center"
+                                                htmlFor={'icon' + link.id}
+                                            >
+                                                <FontAwesomeIcon icon={faCloudArrowUp} height={24} width={24} />
+                                                <span>Change icon</span>
+                                            </label>
+                                        </div>
+                                        
                                     
-                                   
-                                    <div> 
-                                        <button
-                                            onClick={() => removeLink(link.id)}
-                                            type="button" className="w-full bg-gray-300 py-1 px-3 mb-2 h-full flex gap-2 items-center justify-center hover:bg-red-400">
-                                            <FontAwesomeIcon icon={faTrash} height={24} width={24}/>
-                                            <span>Remove this link</span>
-                                        </button>
-                                    </div>
-                                    
-                                </div>  
+                                        <div> 
+                                            <button
+                                                onClick={() => removeLink(link.id)}
+                                                type="button" className="w-full bg-gray-300 py-1 px-3 mb-2 h-full flex gap-2 items-center justify-center hover:bg-red-400">
+                                                <FontAwesomeIcon icon={faTrash} height={24} width={24}/>
+                                                <span>Remove this link</span>
+                                            </button>
+                                        </div>
+                                        
+                                    </div>  
+                                </div>
+                            
                             </div>
 
-                            <div className="grow">
+                            <div className="md:grow w-full">
                                 <label className="input-label" htmlFor="nameIn">Title</label>
                                 <input className="button-input" onChange={ev => handleLinksChange(link.id, 'title', ev)} value={link.title} type="text" placeholder="title" />
                                 <label className="input-label" htmlFor="nameIn">Subtitle</label>

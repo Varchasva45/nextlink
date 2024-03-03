@@ -39,5 +39,16 @@ label.input-label{
   opacity: 0.2;
 }
 
+input#navCheckbox:checked ~ aside {
+  left: 0;
+}
 
+input#navCheckbox:checked ~ .backdrop {
+  display: block;
+}
 
+@screen custom {
+  .img {
+    display: block;
+  }
+}

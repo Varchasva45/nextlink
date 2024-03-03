@@ -113,42 +113,46 @@ export default async function AnalyticsPage() {
                 
                 {   
                     page.links.map((link) => (
-                        <div key={link._id} className="flex gap-6 items-center border-t border-gray-300 py-4">    
-                            
-                            <div> 
-                                <FontAwesomeIcon icon={faLink} height={24} width={24} className="text-blue-500 pl-6"/>
-                            </div>
-                            <div className="grow">
-                                <h3>{link.title || "no title"}</h3>
-                                <p className="text-gray-400">{link.subtitle || "no subtitle"}</p>
-                                <a target="_blank" href={link.url} className="text-sm text-blue-500">{link.url}</a>
-                            </div>
-                            <div className="text-center">
-                                <div className="border border-gray-300 rounder-md p-2">    
-                                    <div className="text-2xl"> 
-                                        {
-                                            clicks.filter((click) => {
-                                                const clickDate = click.createdAt.toISOString().split('T')[0];
-                                                return clickDate === today && click.uri === link.url;
-                                            }).length
-                                        }
-                                    </div>
-                                        
-                                    <div className="uppercase text-gray-400 text-xs">Clicks Today</div>
+                        <div key={link._id} className="flex md:flex-row flex-col gap-6 items-center justify-center border-t border-gray-300 py-4">    
+                            <div className="flex gap-6 grow items-center">
+                                <div> 
+                                    <FontAwesomeIcon icon={faLink} height={24} width={24} className="text-blue-500 pl-6"/>
+                                </div>
+                                <div className="grow">
+                                    <h3>{link.title || "no title"}</h3>
+                                    <p className="text-gray-400">{link.subtitle || "no subtitle"}</p>
+                                    <a target="_blank" href={link.url} className="text-sm text-blue-500">{link.url}</a>
                                 </div>
                             </div>
 
-                            <div className="text-center mr-6">
-                                <div className="border border-gray-300 rounder-md p-2">
-                                    <div className="text-2xl"> 
-                                        {
-                                            clicks.filter((click) => {
-                                                return click.uri === link.url;
-                                            }).length
-                                        }
+                            <div className="flex gap-2">
+                                <div className="text-center">
+                                    <div className="border border-gray-300 rounder-md p-2">    
+                                        <div className="text-2xl"> 
+                                            {
+                                                clicks.filter((click) => {
+                                                    const clickDate = click.createdAt.toISOString().split('T')[0];
+                                                    return clickDate === today && click.uri === link.url;
+                                                }).length
+                                            }
+                                        </div>
+                                            
+                                        <div className="uppercase text-gray-400 text-xs">Clicks Today</div>
                                     </div>
-                                        
-                                    <div className="uppercase text-gray-400 text-xs">Cicks Total</div>
+                                </div>
+
+                                <div className="text-center mr-6">
+                                    <div className="border border-gray-300 rounder-md p-2">
+                                        <div className="text-2xl"> 
+                                            {
+                                                clicks.filter((click) => {
+                                                    return click.uri === link.url;
+                                                }).length
+                                            }
+                                        </div>
+                                            
+                                        <div className="uppercase text-gray-400 text-xs">Cicks Total</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
