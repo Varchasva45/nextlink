@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react';
 import "../globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
@@ -85,7 +84,6 @@ export default async function AppLayout({ children }) {
             {children}
           </div>
         </main>
-        <Analytics />
       </body>
     </html>
   );

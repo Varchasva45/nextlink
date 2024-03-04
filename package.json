@@ -16,7 +16,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "fortawesome/react-fontawesome",
-    "@vercel/analytics": "^1.2.2",
     "clone-deep": "^4.0.1",
     "date-fns": "^3.3.1",
     "mongo-adapter": "^1.0.8",
