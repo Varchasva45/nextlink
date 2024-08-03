@@ -24,7 +24,6 @@ export default async function Header() {
 
             <nav className="hidden md:flex  gap-5 text-slate-500 items-center text-lg">
               <Link href={'/'}>About</Link>
-              <Link href={'/'}>Pricing</Link>
               <Link href={'/'}>Contact</Link>          
             </nav>
 
