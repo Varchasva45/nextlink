@@ -84,10 +84,10 @@ export default async function UserPage({params}) {
                         key={link.url}
                         target="_blank"
                         ping={process.env.URL+'api/click?url='+ btoa(link.url)+'&page='+page.uri}
-                        className="bg-indigo-800 p-2 block flex"
+                        className="bg-indigo-800 p-2 flex"
                         href={link.url}>
                         <div className="relative -left-4 overflow-hidden w-16">
-                        <div className="w-16 h-16 bg-blue-700 aspect-square relative flex items-center justify-center aspect-square">
+                        <div className="w-16 h-16 bg-blue-700 relative flex items-center justify-center aspect-square">
                             {link.icon && (
                             <Image
                                 className="w-full h-full object-cover"
