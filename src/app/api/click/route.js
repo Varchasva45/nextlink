@@ -6,6 +6,7 @@ export async function POST(req) {
   const uri = atob(url.searchParams.get("url"));
   const page = url.searchParams.get("page"); 
   await mongoose.connect(process.env.MONGO_URI);
+  console.log('creating the document', 'Click', uri, page);
   Event.create({type:"Click", uri:uri, page:page});
   return Response.json(true);
 }
