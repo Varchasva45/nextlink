@@ -67,7 +67,7 @@ export default function PageButtonsForm({page, user}) {
 
                             <div className="flex flex-grow">
                                 <input type="text" 
-                                    className="button-input bg-gray-100 block flex-grow" 
+                                    className="button-input bg-gray-200 block flex-grow" 
                                     name={button.key}
                                     placeholder={button.placholder} 
                                     defaultValue={page?.buttons[button.key]}
@@ -77,7 +77,7 @@ export default function PageButtonsForm({page, user}) {
                                 />
 
                                 <button 
-                                    className="text-gray-700 px-4 bg-gray-300 hover:bg-red-200"
+                                    className="text-gray-700 px-4 bg-gray-200 hover:bg-red-200"
                                     onClick={() => removeButtonFromProfile(button)}
                                     type="button"
                                 >

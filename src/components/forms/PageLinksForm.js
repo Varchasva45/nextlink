@@ -80,7 +80,7 @@ function PageLinksForm({page, user}) {
                                 
                                 <div className="flex flex-col gap-4 items-center">  
                                     
-                                    <div className="w-16 h-16 bg-gray-300 flex relative aspect-square items-center justify-center overflow-hidden">
+                                    <div className="w-16 h-16 bg-gray-200 flex relative aspect-square items-center justify-center overflow-hidden">
                                         {link.icon && <Image src={link.icon} alt="icon" height={64} width={64} className="w-full h-full object-cover" />}
                                         {!link.icon && <FontAwesomeIcon icon={faLink} height={18} width={18} className="" />}
                                     </div>
@@ -107,7 +107,7 @@ function PageLinksForm({page, user}) {
                                         <div> 
                                             <button
                                                 onClick={() => removeLink(link.id)}
-                                                type="button" className="w-full bg-gray-300 py-1 px-3 mb-2 h-full flex gap-2 items-center justify-center hover:bg-red-400">
+                                                type="button" className="w-full bg-gray-200 py-1 px-3 mb-2 h-full flex gap-2 items-center justify-center hover:bg-red-400">
                                                 <FontAwesomeIcon icon={faTrash} height={24} width={24}/>
                                                 <span>Remove this link</span>
                                             </button>

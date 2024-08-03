@@ -41,7 +41,7 @@ export default function PageSettingsForm({page, user}) {
             <SectionBox>
                 <form action={saveBaseSettings}> 
 
-                    <div className=" bg-gray-100 border-b-2 border-gray-300">
+                    <div className=" bg-gray-200 border-b-2 border-gray-300">
                         <div className="py-24 -m-2 flex justify-center items-center bg-cover bg-center bg-no-repeat bg-stretch "
                             style={bgType === "color" ? {backgroundColor: bgColor} : {backgroundImage: `url(${bgImage})`, backgroundSize: 'cover'}}
                         >
